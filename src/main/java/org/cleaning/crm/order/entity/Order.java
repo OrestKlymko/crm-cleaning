@@ -8,6 +8,8 @@ import org.cleaning.crm.order.enums.Status;
 import org.cleaning.crm.time.RangeTime;
 import org.cleaning.crm.worker.entity.Worker;
 
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -44,4 +46,6 @@ public class Order {
 	@OneToOne
 	@JoinColumn(name = "plan_id", referencedColumnName = "id")
 	private Plan plan;
+
+	private final LocalDateTime createdAt = LocalDateTime.now();
 }

@@ -1,7 +1,11 @@
 package org.cleaning.crm.client.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.cleaning.crm.building.entity.Building;
 import org.cleaning.crm.client.enums.Sex;
 
 import java.util.List;
@@ -9,6 +13,9 @@ import java.util.List;
 @Entity
 @Table(name = "clients")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Client {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

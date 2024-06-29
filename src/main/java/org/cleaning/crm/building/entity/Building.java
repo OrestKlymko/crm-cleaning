@@ -1,13 +1,20 @@
-package org.cleaning.crm.client.entity;
+package org.cleaning.crm.building.entity;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.cleaning.crm.client.entity.Client;
 import org.cleaning.crm.client.enums.TypeBuilding;
 
 @Entity
-@Table(name = "Building")
+@Table(name = "building")
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Building {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

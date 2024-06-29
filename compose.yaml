@@ -1,9 +1,14 @@
+version: '3.1'
+
 services:
   postgres:
+    container_name: 'postgresql'
     image: 'postgres:latest'
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      - POSTGRES_DB=cleaning
+      - POSTGRES_PASSWORD=secret
+      - POSTGRES_USER=myuser
     ports:
-      - '5432'
+      - '5432:5432'
+    volumes:
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d

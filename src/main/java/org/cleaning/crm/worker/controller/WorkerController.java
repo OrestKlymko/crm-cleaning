@@ -8,6 +8,7 @@ import org.cleaning.crm.worker.model.UpdateWorkerRequest;
 import org.cleaning.crm.worker.model.WorkerResponse;
 import org.cleaning.crm.worker.service.WorkerService;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,11 +26,11 @@ public class WorkerController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getWorker(@PathVariable long id) {
+	public ResponseEntity<WorkerResponse> getWorker(@PathVariable long id) {
 		try {
 			return ResponseEntity.ok(workerService.getWorker(id));
 		} catch (NotFoundException e) {
-			return ResponseEntity.badRequest().body(e.getMessage());
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
 		}
 	}
 
@@ -46,5 +47,10 @@ public class WorkerController {
 	@PutMapping("/{id}")
 	public void updateWorker(@PathVariable long id, @RequestBody UpdateWorkerRequest request) {
 		workerService.updateWorker(id, request);
+	}
+
+	@ExceptionHandler(NotFoundException.class)
+	public ResponseEntity<String> handleNotFoundException(NotFoundException e) {
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
 	}
 }

@@ -1,16 +1,21 @@
 package org.cleaning.crm.worker.service;
 
 
+import jakarta.persistence.Tuple;
 import lombok.AllArgsConstructor;
 import org.cleaning.crm.exception.NotFoundException;
 import org.cleaning.crm.worker.entity.Worker;
+import org.cleaning.crm.worker.mapper.WorkerMapper;
 import org.cleaning.crm.worker.model.CreateWorkerRequest;
 import org.cleaning.crm.worker.model.UpdateWorkerRequest;
+import org.cleaning.crm.worker.model.WorkerMainInfoResponse;
 import org.cleaning.crm.worker.model.WorkerResponse;
 import org.cleaning.crm.worker.repository.WorkerRepository;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -67,5 +72,10 @@ public class WorkerService {
 				.stream()
 				.map(WorkerResponse::mapToWorkerResponse)
 				.toList();
+	}
+
+	public List<WorkerMainInfoResponse> getAvailableWorkers(LocalDateTime start, LocalDateTime end) {
+		List<Tuple> availableWorkers = workerRepository.findAvailableWorkers(start, end);
+		return new WorkerMapper(availableWorkers).toMainInfoResponse();
 	}
 }

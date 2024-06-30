@@ -1,4 +1,4 @@
-package org.cleaning.crm.client.enums;
+package org.cleaning.crm.building.enums;
 
 public enum TypeBuilding {
 	ONE_BEDROOM,

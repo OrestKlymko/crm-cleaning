@@ -23,7 +23,7 @@ public interface WorkerRepository extends JpaRepository<Worker, Long> {
 
 
 	@Query(value = """
-			SELECT w.first_name, w.last_name,w.hour_rate
+			SELECT w.id,w.first_name, w.last_name,w.hour_rate
 			FROM Worker w 
 			LEFT JOIN worker_cleaning_time_schedule wcts ON w.id = wcts.worker_id 
 			WHERE (wcts.worker_id IS NULL OR (wcts.end <= :start OR wcts.start >= :end))

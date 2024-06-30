@@ -2,7 +2,7 @@ package org.cleaning.crm.building.model;
 
 import lombok.Builder;
 import org.cleaning.crm.building.entity.Building;
-import org.cleaning.crm.client.enums.TypeBuilding;
+import org.cleaning.crm.building.enums.TypeBuilding;
 
 @Builder
 public record BuildingRequest(

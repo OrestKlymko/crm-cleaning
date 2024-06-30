@@ -7,7 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.cleaning.crm.client.entity.Client;
-import org.cleaning.crm.client.enums.TypeBuilding;
+import org.cleaning.crm.building.enums.TypeBuilding;
 
 @Entity
 @Table(name = "building")

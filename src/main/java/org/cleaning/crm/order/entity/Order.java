@@ -2,19 +2,24 @@ package org.cleaning.crm.order.entity;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.cleaning.crm.client.entity.Client;
 import org.cleaning.crm.order.enums.Status;
 import org.cleaning.crm.time.RangeTime;
 import org.cleaning.crm.worker.entity.Worker;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Set;
 
 @Entity
 @Table(name = "orders")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

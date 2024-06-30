@@ -17,9 +17,10 @@ public class WorkerMapper implements TupleModelMapper {
 	@Override
 	public List<WorkerMainInfoResponse> toMainInfoResponse() {
 		return tuples.stream().map(tuple -> WorkerMainInfoResponse.builder()
-				.firstName(tuple.get(0, String.class))
-				.lastName(tuple.get(1, String.class))
-				.hourRate(tuple.get(2, Integer.class))
+					.workerId(tuple.get(0,Long.class))
+					.firstName(tuple.get(1, String.class))
+					.lastName(tuple.get(2, String.class))
+					.hourRate(tuple.get(3, Integer.class))
 				.build()).toList();
 	}
 

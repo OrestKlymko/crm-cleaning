@@ -7,6 +7,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.cleaning.crm.client.entity.Client;
+import org.cleaning.crm.order.enums.Sequence;
 import org.cleaning.crm.order.enums.Status;
 import org.cleaning.crm.time.RangeTime;
 import org.cleaning.crm.worker.entity.Worker;
@@ -51,6 +52,9 @@ public class Order {
 	@OneToOne
 	@JoinColumn(name = "plan_id", referencedColumnName = "id")
 	private Plan plan;
+
+	@Enumerated(EnumType.STRING)
+	private Sequence sequence;
 
 	private final LocalDateTime createdAt = LocalDateTime.now();
 }

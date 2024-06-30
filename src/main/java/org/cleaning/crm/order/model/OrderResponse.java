@@ -4,6 +4,7 @@ import lombok.Builder;
 import org.cleaning.crm.order.entity.Order;
 import org.cleaning.crm.order.entity.Plan;
 import org.cleaning.crm.order.entity.Source;
+import org.cleaning.crm.order.enums.Sequence;
 import org.cleaning.crm.order.enums.Status;
 import org.cleaning.crm.time.RangeTime;
 import org.cleaning.crm.worker.entity.Worker;
@@ -20,7 +21,8 @@ public record OrderResponse(
 		Long planPrice,
 		LocalDateTime createdAt,
 		RangeTime rangeTime,
-		Status status
+		Status status,
+		Sequence sequence
 
 ) {
 	public static OrderResponse toOrderResponse(Order order){
@@ -33,6 +35,7 @@ public record OrderResponse(
 				.createdAt(order.getCreatedAt())
 				.rangeTime(order.getRangeTime())
 				.status(order.getStatus())
+				.sequence(order.getSequence())
 				.build();
 	}
 }
